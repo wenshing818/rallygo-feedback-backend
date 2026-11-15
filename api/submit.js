@@ -93,7 +93,7 @@ async function writeToNotion(n, timestamp) {
     "What Went Well / 做得好的地方": { rich_text: [{ text: { content: (n.answers[0] || "").slice(0, 2000) } }] },
     "What Went Wrong / 出现的问题": { rich_text: [{ text: { content: (n.answers[1] || "").slice(0, 2000) } }] },
     "Scheduling & Communication / 赛程与沟通": { rich_text: [{ text: { content: (n.answers[2] || "").slice(0, 2000) } }] },
-    "Other Feedback / 其他反馈": { rich_text: [{ text: { content: (n.answers[3] || "").slice(0, 2000) } }] },
+    "Other Feedback / 其他反馈": { rich_text: [{ text: { content: (n.answers.length >= 5 ? (n.answers[3] || "") : "").slice(0, 2000) } }] },
     "Language / 语言": { select: { name: n.language === "简体中文" ? "简体中文" : "English" } },
     "Improvement Suggestions / 改善建议": { rich_text: [{ text: { content: (n.answers[4] || n.answers[n.answers.length - 1] || "").slice(0, 2000) } }] },
     "Submission Date / 提交日期": { date: { start: timestamp.slice(0, 10) } },
