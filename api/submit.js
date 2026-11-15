@@ -97,8 +97,6 @@ async function writeToNotion(n, timestamp) {
     "Language / 语言": { select: { name: n.language === "简体中文" ? "简体中文" : "English" } },
     "Improvement Suggestions / 改善建议": { rich_text: [{ text: { content: (n.answers[4] || n.answers[n.answers.length - 1] || "").slice(0, 2000) } }] },
     "Submission Date / 提交日期": { date: { start: timestamp.slice(0, 10) } },
-    "Submitted By / 提交人": { rich_text: [{ text: { content: (n.submittedBy || "").slice(0, 200) } }] },
-    "Human Verification Status / 人工核实状态": { select: { name: "Not Verified / 未核实" } },
   };
   if (n.crewFunction && CREW_NOTION[n.crewFunction]) {
     props["Crew Function / 工作职能"] = { select: { name: CREW_NOTION[n.crewFunction] } };
