@@ -54,7 +54,7 @@ async function writeReportToNotion(eventId, { summary, topPositives, topIssues, 
   const token = process.env.NOTION_TOKEN;
   const dataSourceId = process.env.NOTION_REPORT_DATA_SOURCE_ID;
   if (!token || !dataSourceId) return { skipped: true, reason: "notion-not-configured" };
-  const today = new Date().toISOString().slice(0, 10);
+  const today = new Date().toLocaleDateString("en-CA", { timeZone: "Asia/Singapore" }); // SGT date, not UTC
   const props = {
     "Report / 报告": { title: [{ text: { content: `RallyGo x Tennis123 — ${eventId} — AI 复盘报告 (AI-generated, verify before publishing)` } }] },
     "Key Issues / 关键问题": { rich_text: [{ text: { content: (topIssues || []).join("\n").slice(0, 2000) } }] },
