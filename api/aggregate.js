@@ -115,7 +115,7 @@ module.exports = async (req, res) => {
     for (let i = 0; i < rows.length; i += 50) batches.push(rows.slice(i, i + 50));
     const batchSummaries = [];
     for (const batch of batches) {
-      const text = batch.map((r, i) => `#${i + 1} [${r[2]} rating=${r[5] || "-"}] ${r.slice(6).join(" | ")}`).join("\n");
+      const text = batch.map((r, i) => `#${i + 1} [${r[2]} rating=${r[5] || "-"}] ${r.slice(6, 11).join(" | ")}`).join("\n");
       try {
         batchSummaries.push(await callGemini(text, eventId, batch.length));
       } catch (e) {
