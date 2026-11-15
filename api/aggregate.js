@@ -1,5 +1,5 @@
-// TER — 500-user Q&A: batch aggregate endpoint (Vercel, owner-triggered)
-// POST /api/aggregate  { eventId: "TER-2026-1114-KALLANG" }
+// RallyGo - 500-user Q&A: batch aggregate endpoint (Vercel, owner-triggered)
+// POST /api/aggregate  { eventId: "RALLYGO-2026-1114-KALLANG" }
 // Reads all raw rows for the event from Google Sheets, groups them in
 // batches of 50, calls Gemini ONCE per batch (gemini-3.5-flash-lite),
 // then combines the batch summaries into ONE tournament report.

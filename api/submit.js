@@ -1,4 +1,4 @@
-// TER — 500-user Q&A: fast submit endpoint (Vercel)
+// RallyGo - 500-user Q&A: fast submit endpoint (Vercel)
 // POST /api/submit
 // Design: 500 users fill this in after EACH tournament.
 // Fast submit stores the raw Q&A in ONE Google Sheet row (free),
@@ -10,7 +10,7 @@
 // Env vars (Vercel Dashboard, never in code / never in chat):
 //   GOOGLE_SHEET_ID               — Sheet with header row: timestamp,eventId,role,crewFunction,language,q1,q2,q3,q4,q5,rating
 //   GOOGLE_SERVICE_ACCOUNT_JSON   — service-account JSON (one line), Sheet shared with its email as Editor
-//   NOTION_TOKEN                  — internal integration 'TER Feedback Backend'
+//   NOTION_TOKEN                  — internal integration 'RallyGo Feedback Backend'
 //   NOTION_FEEDBACK_DATA_SOURCE_ID — Feedback DB4 data source id
 //
 // Payloads accepted (both, so old and new pages work):
@@ -47,9 +47,11 @@ const CREW_NOTION = {
   Both: "Both / 两者",
   Other: "Other / 其他",
 };
-// Known event page ids in the TER Events database, for the Event relation.
+// Known event page ids in the RallyGo Events database, for the Event relation.
+// Old TER-... id kept as an alias so earlier submissions still link.
 const EVENT_PAGE = {
-  "TER-2026-1114-KALLANG": "4197fbb0-0e7d-816b-9c32-f307c1465f99",
+  "RALLYGO-2026-1114-KALLANG": "4197fbb0-0e7d-816b-9c32-f307c1465f99",
+  "TER-2026-1114-KALLANG": "4197fbb0-0e7d-816b-9c32-f307c1465f99", // alias — old event id
 };
 
 function normalise(body) {
