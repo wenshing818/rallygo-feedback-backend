@@ -1,0 +1,1 @@
+{"dependencies":{"googleapis":"^144.0.0"},"description":"TER AI-Assisted Feedback backend for Vercel Hobby — 500-user Q&A: fast submit to Google Sheets, Gemini once per 50-batch in aggregate, 1 Notion report per tournament","engines":{"node":">=20"},"name":"ter-feedback-backend","private":true,"version":"1.1.0"}
