@@ -56,6 +56,10 @@ module.exports = async (req, res) => {
 
     const { google } = require("googleapis");
     const creds = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_JSON);
+    // Fix for Vercel env-var pasting: the private_key's \n escapes often
+    // arrive double-escaped (literal backslash-n), which OpenSSL rejects
+    // with "DECODER routines::unsupported". Normalise to real newlines.
+    if (creds.private_key) creds.private_key = String(creds.private_key).replace(/\\n/g, "\n");
     const auth = new google.auth.GoogleAuth({ credentials: creds, scopes: ["https://www.googleapis.com/auth/spreadsheets"] });
     const sheets = google.sheets({ version: "v4", auth });
     await sheets.spreadsheets.values.append({
